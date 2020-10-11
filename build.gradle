@@ -17,14 +17,21 @@ repositories {
 }
 
 dependencies {
+    // flink base
     implementation "org.apache.flink:flink-java:${FLINK_VERSION}"
     implementation "org.apache.flink:flink-streaming-java_${SCALA_BINARY_VERSION}:${FLINK_VERSION}"
+    // flink table
+    implementation "org.apache.flink:flink-table-api-java-bridge_${SCALA_BINARY_VERSION}:${FLINK_VERSION}"
+    implementation "org.apache.flink:flink-table-planner-blink_${SCALA_BINARY_VERSION}:${FLINK_VERSION}"
+    implementation "org.apache.flink:flink-table-api-java:${FLINK_VERSION}"
 
+    // lombok
     compileOnly "org.projectlombok:lombok:1.18.8"
     annotationProcessor "org.projectlombok:lombok:1.18.8"
     testCompileOnly "org.projectlombok:lombok:1.18.8"
     testAnnotationProcessor "org.projectlombok:lombok:1.18.8"
 
+    // slf4j + log4j2
     implementation "org.slf4j:slf4j-api:1.7.25"
     implementation "org.apache.logging.log4j:log4j-slf4j-impl:2.9.1"
     implementation "org.apache.logging.log4j:log4j-api:2.9.1"

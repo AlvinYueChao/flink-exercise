@@ -1,4 +1,4 @@
-package org.example.alvin.flink.datastreamapis;
+package org.example.alvin.flink.datastreamapi;
 
 import lombok.extern.slf4j.Slf4j;
 import org.apache.flink.api.common.functions.ReduceFunction;
@@ -40,7 +40,7 @@ public class ReduceFunctionTest {
         env.execute();
 
         /*
-        execution results：
+        execution results:
         reduce result:3> (0,1,0)
         2020-10-11 00:23:43,998  INFO ReduceFunctionTest:34 - newTuple: (0,0,1)
         reduce result:3> (0,0,1)
