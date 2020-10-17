@@ -26,6 +26,8 @@ public class StreamJoinTest {
         SingleOutputStreamOperator<Item> source = bsEnv.addSource(new MyStreamingSource())
                 .map((MapFunction<Item, Item>) value -> value);
 
+        // split only support seperate stream once.
+        // SideOutput support seperate stream multiple times.
         DataStream<Item> evenStream = source.split(new EvenOddSelector()).select("even");
         DataStream<Item> oddStream = source.split(new EvenOddSelector()).select("odd");
 

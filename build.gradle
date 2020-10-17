@@ -24,6 +24,8 @@ dependencies {
     implementation "org.apache.flink:flink-table-api-java-bridge_${SCALA_BINARY_VERSION}:${FLINK_VERSION}"
     implementation "org.apache.flink:flink-table-planner-blink_${SCALA_BINARY_VERSION}:${FLINK_VERSION}"
     implementation "org.apache.flink:flink-table-api-java:${FLINK_VERSION}"
+    // flink cep
+    implementation "org.apache.flink:flink-cep_${SCALA_BINARY_VERSION}:${FLINK_VERSION}"
 
     // lombok
     compileOnly "org.projectlombok:lombok:1.18.8"
