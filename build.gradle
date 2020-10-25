@@ -26,6 +26,8 @@ dependencies {
     implementation "org.apache.flink:flink-table-api-java:${FLINK_VERSION}"
     // flink cep
     implementation "org.apache.flink:flink-cep_${SCALA_BINARY_VERSION}:${FLINK_VERSION}"
+    // flink kafka
+    implementation "org.apache.flink:flink-connector-kafka_${SCALA_BINARY_VERSION}:${FLINK_VERSION}"
 
     // lombok
     compileOnly "org.projectlombok:lombok:1.18.8"
