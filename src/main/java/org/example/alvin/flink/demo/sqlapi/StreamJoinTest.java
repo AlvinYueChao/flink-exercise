@@ -1,4 +1,4 @@
-package org.example.alvin.flink.sqlapi;
+package org.example.alvin.flink.demo.sqlapi;
 
 import org.apache.flink.api.common.functions.MapFunction;
 import org.apache.flink.api.common.typeinfo.TypeHint;
@@ -11,8 +11,8 @@ import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 import org.apache.flink.table.api.EnvironmentSettings;
 import org.apache.flink.table.api.Table;
 import org.apache.flink.table.api.java.StreamTableEnvironment;
-import org.example.alvin.flink.util.MyStreamingSource;
-import org.example.alvin.flink.util.MyStreamingSource.Item;
+import org.example.alvin.flink.demo.util.MyStreamingSource;
+import org.example.alvin.flink.demo.util.MyStreamingSource.Item;
 
 import java.util.ArrayList;
 import java.util.List;

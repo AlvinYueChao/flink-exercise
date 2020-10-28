@@ -1,4 +1,4 @@
-package org.example.alvin.flink.datastreamapi;
+package org.example.alvin.flink.demo.datastreamapi;
 
 import org.apache.flink.api.java.tuple.Tuple3;
 import org.apache.flink.streaming.api.datastream.DataStreamSource;

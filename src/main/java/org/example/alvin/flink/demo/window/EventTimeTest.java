@@ -1,4 +1,4 @@
-package org.example.alvin.flink.window;
+package org.example.alvin.flink.demo.window;
 
 import lombok.extern.slf4j.Slf4j;
 import org.apache.flink.api.common.functions.MapFunction;

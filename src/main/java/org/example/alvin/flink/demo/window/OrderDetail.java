@@ -1,4 +1,4 @@
-package org.example.alvin.flink.window;
+package org.example.alvin.flink.demo.window;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

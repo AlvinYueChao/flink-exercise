@@ -1,4 +1,4 @@
-package org.example.alvin.flink.datastreamapi;
+package org.example.alvin.flink.demo.datastreamapi;
 
 import lombok.extern.slf4j.Slf4j;
 import org.apache.flink.api.common.functions.ReduceFunction;

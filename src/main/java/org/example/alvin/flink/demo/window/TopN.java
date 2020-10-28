@@ -1,4 +1,4 @@
-package org.example.alvin.flink.window;
+package org.example.alvin.flink.demo.window;
 
 import java.math.BigDecimal;
 import java.time.Instant;
