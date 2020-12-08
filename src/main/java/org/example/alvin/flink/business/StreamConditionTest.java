@@ -16,6 +16,7 @@ import org.apache.flink.util.Collector;
 import org.apache.flink.util.OutputTag;
 
 import java.io.Serializable;
+import java.time.OffsetDateTime;
 
 @Slf4j
 public class StreamConditionTest {
@@ -61,7 +62,7 @@ public class StreamConditionTest {
         public void processElement(RealTimeDataEntity value, ReadOnlyContext ctx, Collector<RealTimeDataEntity> out) {
             boolean enableCondition = true;
             try {
-                Boolean optionalCondition = ctx.getBroadcastState(conditionStateDescriptor).get(value.getSourceType());
+                Boolean optionalCondition = ctx.getBroadcastState(conditionStateDescriptor).get(value.getConditionName());
                 enableCondition = BooleanUtils.isNotFalse(optionalCondition);
             } catch (Exception e) {
                 log.error("Caught exception when getting last condition, so default turn on the condition");
@@ -79,40 +80,42 @@ public class StreamConditionTest {
         public void processBroadcastElement(ConditionEntity value, Context ctx, Collector<RealTimeDataEntity> out) {
             Boolean enableCondition = value.getEnableCondition();
             try {
-                ctx.getBroadcastState(conditionStateDescriptor).put(value.getSourceType(), enableCondition);
+                ctx.getBroadcastState(conditionStateDescriptor).put(value.getConditionName(), enableCondition);
             } catch (Exception e) {
                 log.error("Caught exception when switching the condition as command");
             }
             if (enableCondition) {
-                log.info("Turn on the condition {} for {} data", value.getConditionName(), value.getSourceType());
+                log.info("Turn on the condition {} at {}", value.getConditionName(), OffsetDateTime.now());
             } else {
-                log.info("Turn off the condition {} for {} data", value.getConditionName(), value.getSourceType());
+                log.info("Turn off the condition {} at {}", value.getConditionName(), OffsetDateTime.now());
             }
         }
     }
 
     @Data
     private static class ConditionEntity implements Serializable {
+        /**
+         * conditionName format: {functionality}-{sourceType}-{productType}
+         */
         private String conditionName;
-        private String sourceType;
         private Boolean enableCondition;
     }
 
     @Data
     private static class RealTimeDataEntity implements Serializable {
-        private String sourceType;
+        private String conditionName;
         private String messageBody;
     }
 
     /*
     test conditionEntity json:
-    { "conditionName": "removeDuplicateTrace", "sourceType": "Trace", "enableCondition": true }
-    { "conditionName": "removeDuplicateTrace", "sourceType": "Trace", "enableCondition": false }
+    { "conditionName": "RemoveDuplicate-Trace-MBS", "enableCondition": true }
+    { "conditionName": "RemoveDuplicate-Trace-MBS", "enableCondition": false }
 
     test readTimeDataEntity json:
-    { "sourceType": "Trace", "messageBody": "message 1" }
-    { "sourceType": "Trace", "messageBody": "message 2" }
-    { "sourceType": "Trace", "messageBody": "message 3" }
-    { "sourceType": "Trace", "messageBody": "message 4" }
+    { "conditionName": "RemoveDuplicate-Trace-MBS", "messageBody": "message 1" }
+    { "conditionName": "RemoveDuplicate-Trace-MBS", "messageBody": "message 2" }
+    { "conditionName": "RemoveDuplicate-Trace-MBS", "messageBody": "message 3" }
+    { "conditionName": "RemoveDuplicate-Trace-MBS", "messageBody": "message 4" }
      */
 }
