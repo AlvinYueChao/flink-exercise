@@ -12,8 +12,6 @@ import org.apache.flink.streaming.api.watermark.Watermark;
 import org.apache.flink.streaming.api.windowing.assigners.TumblingEventTimeWindows;
 import org.apache.flink.streaming.api.windowing.time.Time;
 
-import javax.annotation.Nullable;
-
 @Slf4j
 public class EventTimeTest {
     public static void main(String[] args) throws Exception {
@@ -26,7 +24,6 @@ public class EventTimeTest {
                     private Long currentTimeStamp = 0L;
                     private Long maxOutOfOrderness = 5000L;
 
-                    @Nullable
                     @Override
                     public Watermark getCurrentWatermark() {
                         return new Watermark(this.currentTimeStamp - this.maxOutOfOrderness);
@@ -44,7 +41,7 @@ public class EventTimeTest {
 
         dataStream.map((MapFunction<String, Tuple2<String, Long>>) value -> {
             String[] arr = value.split(",");
-            return new Tuple2<String, Long>(arr[0], Long.parseLong(arr[1]));
+            return new Tuple2<>(arr[0], Long.parseLong(arr[1]));
         }).returns(Types.TUPLE(Types.STRING, Types.LONG))
                 .keyBy(0).window(TumblingEventTimeWindows.of(Time.seconds(5))).minBy(1)
                 .print("Minimum result");

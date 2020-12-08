@@ -13,7 +13,7 @@ public class MyStreamingSource implements SourceFunction<MyStreamingSource.Item>
     private volatile boolean isRunning = true;
 
     @Override
-    public void run(SourceContext<Item> ctx) throws Exception {
+    public void run(SourceContext<MyStreamingSource.Item> ctx) throws Exception {
         while (isRunning) {
             Item item = generateItem();
             ctx.collect(item);
