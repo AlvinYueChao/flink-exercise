@@ -118,4 +118,24 @@ public class StreamConditionTest {
     { "conditionName": "RemoveDuplicate-Trace-MBS", "messageBody": "message 3" }
     { "conditionName": "RemoveDuplicate-Trace-MBS", "messageBody": "message 4" }
      */
+
+    /*
+    demo result:
+    enabled condition stream:2> StreamConditionTest.RealTimeDataEntity(conditionName=RemoveDuplicate-Trace-MBS, messageBody=message 1)
+    2020-12-09 08:43:51,012  INFO StreamConditionTest:72 - received message StreamConditionTest.RealTimeDataEntity(conditionName=RemoveDuplicate-Trace-MBS, messageBody=message 1) and enabled condition process logic
+    2020-12-09 08:44:04,553  INFO StreamConditionTest:90 - Turn off the condition RemoveDuplicate-Trace-MBS at 2020-12-09T08:44:04.553+08:00
+    2020-12-09 08:44:04,553  INFO StreamConditionTest:90 - Turn off the condition RemoveDuplicate-Trace-MBS at 2020-12-09T08:44:04.553+08:00
+    2020-12-09 08:44:04,553  INFO StreamConditionTest:90 - Turn off the condition RemoveDuplicate-Trace-MBS at 2020-12-09T08:44:04.553+08:00
+    2020-12-09 08:44:04,553  INFO StreamConditionTest:90 - Turn off the condition RemoveDuplicate-Trace-MBS at 2020-12-09T08:44:04.553+08:00
+    disabled condition stream:3> StreamConditionTest.RealTimeDataEntity(conditionName=RemoveDuplicate-Trace-MBS, messageBody=message 2)
+    2020-12-09 08:44:15,160  INFO StreamConditionTest:75 - received message StreamConditionTest.RealTimeDataEntity(conditionName=RemoveDuplicate-Trace-MBS, messageBody=message 2) and disabled condition process logic
+    disabled condition stream:4> StreamConditionTest.RealTimeDataEntity(conditionName=RemoveDuplicate-Trace-MBS, messageBody=message 3)
+    2020-12-09 08:44:22,412  INFO StreamConditionTest:75 - received message StreamConditionTest.RealTimeDataEntity(conditionName=RemoveDuplicate-Trace-MBS, messageBody=message 3) and disabled condition process logic
+    2020-12-09 08:44:34,174  INFO StreamConditionTest:88 - Turn on the condition RemoveDuplicate-Trace-MBS at 2020-12-09T08:44:34.174+08:00
+    2020-12-09 08:44:34,174  INFO StreamConditionTest:88 - Turn on the condition RemoveDuplicate-Trace-MBS at 2020-12-09T08:44:34.174+08:00
+    2020-12-09 08:44:34,174  INFO StreamConditionTest:88 - Turn on the condition RemoveDuplicate-Trace-MBS at 2020-12-09T08:44:34.174+08:00
+    2020-12-09 08:44:34,174  INFO StreamConditionTest:88 - Turn on the condition RemoveDuplicate-Trace-MBS at 2020-12-09T08:44:34.174+08:00
+    enabled condition stream:1> StreamConditionTest.RealTimeDataEntity(conditionName=RemoveDuplicate-Trace-MBS, messageBody=message 4)
+    2020-12-09 08:44:41,766  INFO StreamConditionTest:72 - received message StreamConditionTest.RealTimeDataEntity(conditionName=RemoveDuplicate-Trace-MBS, messageBody=message 4) and enabled condition process logic
+     */
 }
